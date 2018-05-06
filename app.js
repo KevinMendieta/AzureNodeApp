@@ -18,7 +18,7 @@ app.post('/add', bodyParser.json(),(req, res) => {
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
-app.listen(process.env.PORT || 1337);
+app.listen(process.env.PORT || 80);
 
 //
 const Connection = require('tedious').Connection;
