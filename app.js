@@ -12,6 +12,14 @@ app.get('/', (req, res) => {
 	res.render('index');
 });
 
+app.get('/guests', (req, res) => {
+	res.setHeader('Content-Type', 'application/json');
+	const callback = data => {
+		res.send(JSON.stringify(data));
+	};
+	query_database(callback)
+});
+
 app.post('/add', bodyParser.json(),(req, res) => {
 	insert_database(req.body);
 });
@@ -43,17 +51,25 @@ connection.on('connect', err => {
 	err ? console.log(err) : "";
 });
 
-function query_database(){
+function query_database(callback){
 	// Read all rows from table
 	const query = 'SELECT * FROM Guest';
+	const data = [];
 	request = new Request(query, (err, rowCount, rows) => {
-		console.log(rowCount + ' row(s) returned');
-		process.exit();
+		//console.log(data);
+		//console.log(rowCount + ' row(s) returned');
+		callback(data);
+		//process.exit();
 	});
 	request.on('row', columns => {
+		let record = {};
 		columns.forEach(column => {
-			console.log("%s\t%s", column.metadata.colName, column.value);
+			//console.log("%s\t%s", column.metadata.colName, column.value);
+			let name = column.metadata.colName;
+			let value = column.value;
+			record[name] = value;
 		});
+		data.push(record);
 	});
 	connection.execSql(request);
 }

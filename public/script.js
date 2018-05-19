@@ -19,4 +19,18 @@ window.onload = function() {
 		};
 		xhr.send(JSON.stringify(content));
 	};
+
+	document.getElementById('refresh').onclick = event => {
+		event.preventDefault();
+		$('#table thead').find("tr").remove();
+		$('#table tbody').find("tr").remove();
+		let header = "<tr><th>Name</th><th>Second Name</th><th>Email</th></tr>";
+		$('#table thead').append(header);
+		$.get("/guests").then(guests => {
+			guests.forEach(guest => {
+				let content = "<tr><th>" + guest.GuestName + "</th><th>" + guest.GuestSecondName + "</th><th>" +  guest.GuestEmail + "</th></tr>";
+				$('#table tbody').append(content);
+			});
+		});
+	};
 }

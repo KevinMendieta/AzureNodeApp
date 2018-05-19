@@ -2,11 +2,62 @@
 <html>
 <head>
 	<title>Conu Web App</title>
-
+	<script src="script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
-	<script src="script.js"></script>
-	<h1>Register Form:</h1>
+	<h1 class="text-center">Conu Guest Book</h1>
+	<hr/>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h3>Register form</h3>
+				<form>
+					<div class="form-group">
+						<label for="name">First Name</label>
+						<input type="name" class="form-control" id="name">
+					</div>
+					<div class="form-group">
+						<label for="sname">Second Name</label>
+						<input type="name" class="form-control" id="sname">
+					</div>
+					<div class="form-group">
+						<label for="phone">Phone</label>
+						<input type="phone" class="form-control" id="phone">
+					</div>
+					<div class="form-group">
+						<label for="etps">Enterprise</label>
+						<input type="name" class="form-control" id="etps">
+					</div>
+					<div class="form-group">
+						<label for="adrs">Address</label>
+						<input type="name" class="form-control" id="adrs">
+					</div>
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email" class="form-control" id="email">
+					</div>
+					<button id="submit" type="submit" class="btn btn-primary">Register</button>
+				</form>
+			</div>
+			<div class="col text-center">
+				<button id="refresh" type="submit" class="btn btn-primary">See Guests</button>
+				<hr/>
+				<table id="table" class="table table-striped">
+				    <thead>
+				    </thead>
+				    <tbody>
+					</tbody>
+				</table>
+			</div>
+			<div class="col text-center">
+				<iframe src='https://webchat.botframework.com/embed/FAQconu?s=NnHId1EhKLU.cwA.KY4.Lk8gRlMlHFuD7jXUxF0_yrwaST6kae74p8P52lQIANQ' width="250" height="400"></iframe>
+			</div>
+		</div>
+	</div>
+
+	<!--<h1>Register Form:</h1>
 	<form>
 		<p>Name: </p>
 		<input type="text" id="name" placeholder="Name">
@@ -29,6 +80,6 @@
 		<p></p>
 		
 		<button id="submit">register</button>
-	</form>
+	</form> !-->
 </body>
 </html>
